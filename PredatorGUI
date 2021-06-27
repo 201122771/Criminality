@@ -1,0 +1,232 @@
+-- Instances:
+
+local RobloxAdminPanel = Instance.new("ScreenGui")
+local MainContainer = Instance.new("Frame")
+local InsideContainer = Instance.new("Frame")
+local CheatsButton = Instance.new("TextButton")
+local CheatsPage = Instance.new("Frame")
+local Aimbot = Instance.new("TextButton")
+local ESP = Instance.new("TextButton")
+local ESPToggle = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local TItle = Instance.new("TextLabel")
+local FrameB = Instance.new("Frame")
+
+local Players = game:GetService("Players")
+
+-- Variables:
+
+local ESPToggled = false
+local ESPNotified = false
+local AimbotNotified = false
+
+_G.chams = false
+
+--Properties:
+
+RobloxAdminPanel.Name = "RobloxAdminPanel"
+RobloxAdminPanel.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+RobloxAdminPanel.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainContainer.Name = "MainContainer"
+MainContainer.Parent = RobloxAdminPanel
+MainContainer.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainContainer.BorderSizePixel = 0
+MainContainer.ClipsDescendants = true
+MainContainer.Position = UDim2.new(0.422648519, 0, 0.297343075, 0)
+MainContainer.Size = UDim2.new(0, 250, 0, 336)
+
+InsideContainer.Name = "InsideContainer"
+InsideContainer.Parent = MainContainer
+InsideContainer.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+InsideContainer.BorderSizePixel = 0
+InsideContainer.Position = UDim2.new(0.0560000017, 0, 0.0403104275, 0)
+InsideContainer.Size = UDim2.new(0, 222, 0, 307)
+
+CheatsButton.Name = "CheatsButton"
+CheatsButton.Parent = InsideContainer
+CheatsButton.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+CheatsButton.BorderSizePixel = 0
+CheatsButton.Position = UDim2.new(0.364864886, 0, 0.217735767, 0)
+CheatsButton.Size = UDim2.new(0, 56, 0, 24)
+CheatsButton.Font = Enum.Font.Ubuntu
+CheatsButton.Text = "Cheats"
+CheatsButton.TextColor3 = Color3.fromRGB(178, 178, 178)
+CheatsButton.TextSize = 14.000
+CheatsButton.MouseButton1Down:Connect(function()
+	if CheatsPage.Visible == false then
+		CheatsPage.Visible = true
+	end
+end)
+
+CheatsPage.Name = "CheatsPage"
+CheatsPage.Parent = CheatsButton
+CheatsPage.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+CheatsPage.BorderSizePixel = 0
+CheatsPage.Position = UDim2.new(-1.25, 0, 0.983947754, 0)
+CheatsPage.Size = UDim2.new(0, 200, 0, 207)
+
+Aimbot.Name = "Aimbot"
+Aimbot.Parent = CheatsPage
+Aimbot.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Aimbot.BorderSizePixel = 0
+Aimbot.Position = UDim2.new(0.170000002, 0, 0.306306273, 0)
+Aimbot.Size = UDim2.new(0, 131, 0, 34)
+Aimbot.Font = Enum.Font.Ubuntu
+Aimbot.Text = "Aimbot (WIP)"
+Aimbot.TextColor3 = Color3.fromRGB(178, 178, 178)
+Aimbot.TextSize = 14.000
+Aimbot.MouseButton1Down:Connect(function()
+	if AimbotNotified == false then
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "PREDATOR";
+			Text =  "Aimbot in development, not available.";
+			Icon = "rbxassetid://5937423801";
+			Duration = 5;
+		})
+		AimbotNotified = true
+	end
+end)
+
+ESP.Name = "ESP"
+ESP.Parent = CheatsPage
+ESP.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ESP.BorderSizePixel = 0
+ESP.Position = UDim2.new(0.170000002, 0, 0.0729860514, 0)
+ESP.Size = UDim2.new(0, 131, 0, 34)
+ESP.AutoButtonColor = false
+ESP.Font = Enum.Font.Ubuntu
+ESP.Text = "               ESP"
+ESP.TextColor3 = Color3.fromRGB(178, 178, 178)
+ESP.TextSize = 11.000
+ESP.TextXAlignment = Enum.TextXAlignment.Left
+
+ESPToggle.Name = "ESPToggle"
+ESPToggle.Parent = ESP
+ESPToggle.BackgroundColor3 = Color3.fromRGB(255, 20, 20)
+ESPToggle.BorderSizePixel = 0
+ESPToggle.Position = UDim2.new(0.748091578, 0, 0.147058964, 0)
+ESPToggle.Size = UDim2.new(0, 24, 0, 23)
+ESPToggle.Font = Enum.Font.SourceSans
+ESPToggle.Text = ""
+ESPToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+ESPToggle.TextSize = 14.000
+ESPToggle.MouseButton1Down:Connect(function()
+	if ESPNotified == false then
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "PREDATOR";
+			Text =  "Keybind = RightControl";
+			Icon = "rbxassetid://5937423801";
+			Duration = 5;
+		})
+
+		ESPNotified = true
+	end
+
+	local Players = game:GetService("Players")
+
+	if ESPToggled == false then
+		ESPToggled = true
+		ESPToggle.BackgroundColor3 = Color3.fromRGB(73, 255, 70)
+        ESPToggle.AutoButtonColor = false
+		if _G.chams == false then
+			_G.chams = true
+			function CreateSG(name,parent,face)
+				local SurfaceGui = Instance.new("SurfaceGui",parent)
+				SurfaceGui.Parent = parent
+				SurfaceGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+				SurfaceGui.Face = Enum.NormalId[face]
+				SurfaceGui.LightInfluence = 0
+				SurfaceGui.ResetOnSpawn = false
+				SurfaceGui.Name = name
+				SurfaceGui.AlwaysOnTop = true
+				local Frame = Instance.new("Frame",SurfaceGui)
+				Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                Frame.BorderSizePixel = 1
+				Frame.Size = UDim2.new(1,0,1,0)
+			end
+
+			while wait(1) do
+				for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+					if v ~= game:GetService("Players").LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("Head") and v.Character.Head:FindFirstChild("cham") == nil then
+						for i,v in pairs (v.Character:GetChildren()) do
+							if v:IsA("Part") or v.Name == "Head" then
+								CreateSG("jgsdfgjsfpdjgsjpfsgsvxc",v,"Back")
+								CreateSG("isdjfisjfijsidfjidsjfif",v,"Front")
+								CreateSG("kkkbvmnnvmnclklkskajwij",v,"Left")
+								CreateSG("yjghkghhdgsewteyytuuyiy",v,"Right")
+								CreateSG("zchyrtyj",v,"Right")
+								CreateSG("fdgrfujtyuytthrrth",v,"Top")
+								CreateSG("ghfh",v,"Bottom")
+							end
+						end
+					end
+				end
+			end
+		else
+			_G.chams = false
+		end
+	else
+		ESPToggled = false
+		ESPToggle.BackgroundColor3 = Color3.fromRGB(255, 20, 20)
+	end
+end)
+
+UICorner.CornerRadius = UDim.new(0, 5)
+UICorner.Parent = ESPToggle
+
+TItle.Name = "TItle"
+TItle.Parent = MainContainer
+TItle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TItle.BackgroundTransparency = 1.000
+TItle.Position = UDim2.new(0.100000001, 0, 0.0758891031, 0)
+TItle.Size = UDim2.new(0, 200, 0, 41)
+TItle.Font = Enum.Font.Ubuntu
+TItle.Text = "PREDATOR"
+TItle.TextColor3 = Color3.fromRGB(255, 255, 255)
+TItle.TextScaled = true
+TItle.TextSize = 14.000
+TItle.TextWrapped = true
+
+FrameB.Parent = TItle
+FrameB.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameB.Position = UDim2.new(0.25, 0, 1, 0)
+FrameB.Size = UDim2.new(0, 100, 0, 2)
+
+--
+
+local UIS = game:GetService('UserInputService')
+local frame = MainContainer
+
+local dragToggle = nil
+local dragSpeed = 0.25
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+	local delta = input.Position - dragStart
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+end
+
+frame.InputBegan:Connect(function(input)
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+		dragToggle = true
+		dragStart = input.Position
+		startPos = frame.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragToggle = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		if dragToggle then
+			updateInput(input)
+		end
+	end
+end)
