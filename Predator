@@ -198,7 +198,7 @@ UIS.InputChanged:Connect(function(input)
 end)
 
 mouse.KeyDown:connect(function(key)
-        if key == "Z" then
+        if key == "z" then
     if MainContainer.Visible == true then
 		MainContainer:TweenSize(UDim2.new(0, 250,0, 1), "InOut", "Linear", 0.1)
 		wait(.1)
