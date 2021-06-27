@@ -16,6 +16,9 @@ local Players = game:GetService("Players")
 
 -- Variables:
 
+p = game.Players.LocalPlayer
+mouse = p:GetMouse()
+
 local ESPToggled = false
 local ESPNotified = false
 local AimbotNotified = false
@@ -192,4 +195,17 @@ UIS.InputChanged:Connect(function(input)
 			updateInput(input)
 		end
 	end
+end)
+
+mouse.KeyDown:connect(function(key)
+        if key == "x" then
+    if RobloxAdminPanel.Visible == true then
+		MainContainer:TweenSize(UDim2.new(0, 250,0, 1), "InOut", "Linear", 0.1)
+		wait(.1)
+		RobloxAdminPanel.Visible = false
+    else
+		RobloxAdminPanel.Visible = true
+		MainContainer:TweenSize(UDim2.new(0, 250,0, 336), "InOut", "Linear", 0.1)
+    end
+        end
 end)
