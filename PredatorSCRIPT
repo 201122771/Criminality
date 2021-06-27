@@ -28,7 +28,7 @@ _G.chams = false
 --Properties:
 
 RobloxAdminPanel.Name = "RobloxAdminPanel"
-RobloxAdminPanel.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+RobloxAdminPanel.Parent = game.CoreGui
 RobloxAdminPanel.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MainContainer.Name = "MainContainer"
